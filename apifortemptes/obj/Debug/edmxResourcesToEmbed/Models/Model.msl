@@ -39,14 +39,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="People">
-      <EntityTypeMapping TypeName="temptechModel.Person">
-        <MappingFragment StoreEntitySet="Person">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="temptechModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -70,15 +68,6 @@
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
           <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Somenames">
-      <EntityTypeMapping TypeName="temptechModel.Somename">
-        <MappingFragment StoreEntitySet="Somename">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

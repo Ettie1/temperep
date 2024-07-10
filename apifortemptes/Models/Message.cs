@@ -12,10 +12,10 @@ namespace apifortemptes.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Somename
+    public partial class Message
     {
-        public int Id { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public int MessageId { get; set; }
+        public Nullable<int> MemberId { get; set; }
+        public string Comment { get; set; }
     }
 }

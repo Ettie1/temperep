@@ -28,9 +28,8 @@ namespace apifortemptes.Models
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Member> Members { get; set; }
-        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
-        public virtual DbSet<Somename> Somenames { get; set; }
     }
 }

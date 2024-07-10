@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="temptechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="temptechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Address">
     <Key>
       <PropertyRef Name="AddressId" />
@@ -35,15 +35,13 @@
     <Property Name="Username" Type="nvarchar" MaxLength="50" />
     <Property Name="Password" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="Person">
+  <EntityType Name="Message">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="MessageId" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="10" />
-    <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
-    <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
-    <Property Name="Age" Type="int" />
+    <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberId" Type="int" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -66,21 +64,12 @@
     <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" />
     <Property Name="ProductCost" Type="decimal" Precision="8" Scale="2" />
   </EntityType>
-  <EntityType Name="Somename">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
-    <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
-  </EntityType>
   <EntityContainer Name="temptechModelStoreContainer">
     <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Somename" EntityType="Self.Somename" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

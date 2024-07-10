@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="temptechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="temptechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -40,15 +40,13 @@
           <Property Name="Username" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="Person">
+        <EntityType Name="Message">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="MessageId" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="10" />
-          <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
-          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
-          <Property Name="Age" Type="int" />
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="int" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -71,22 +69,13 @@
           <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" />
           <Property Name="ProductCost" Type="decimal" Precision="8" Scale="2" />
         </EntityType>
-        <EntityType Name="Somename">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
-          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityContainer Name="temptechModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Somename" EntityType="Self.Somename" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -128,15 +117,13 @@
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Person">
+        <EntityType Name="Message">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="MessageId" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Age" Type="Int32" />
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -159,22 +146,13 @@
           <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProductCost" Type="Decimal" Precision="8" Scale="2" />
         </EntityType>
-        <EntityType Name="Somename">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityContainer Name="temptechEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
           <EntitySet Name="Members" EntityType="Self.Member" />
-          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="Messages" EntityType="Self.Message" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Purchases" EntityType="Self.Purchase" />
-          <EntitySet Name="Somenames" EntityType="Self.Somename" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -220,14 +198,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="People">
-            <EntityTypeMapping TypeName="temptechModel.Person">
-              <MappingFragment StoreEntitySet="Person">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="temptechModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -251,15 +227,6 @@
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Somenames">
-            <EntityTypeMapping TypeName="temptechModel.Somename">
-              <MappingFragment StoreEntitySet="Somename">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

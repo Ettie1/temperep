@@ -35,15 +35,13 @@
     <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="Person">
+  <EntityType Name="Message">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="MessageId" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Age" Type="Int32" />
+    <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -66,21 +64,12 @@
     <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ProductCost" Type="Decimal" Precision="8" Scale="2" />
   </EntityType>
-  <EntityType Name="Somename">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityContainer Name="temptechEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Addresses" EntityType="Self.Address" />
     <EntitySet Name="Contacts" EntityType="Self.Contact" />
     <EntitySet Name="Members" EntityType="Self.Member" />
-    <EntitySet Name="People" EntityType="Self.Person" />
+    <EntitySet Name="Messages" EntityType="Self.Message" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="Purchases" EntityType="Self.Purchase" />
-    <EntitySet Name="Somenames" EntityType="Self.Somename" />
   </EntityContainer>
 </Schema>
