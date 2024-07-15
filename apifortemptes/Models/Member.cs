@@ -19,8 +19,8 @@ namespace apifortemptes.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public Nullable<int> Age { get; set; }
-        public string IDNo { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Salt { get; set; }
     }
 }

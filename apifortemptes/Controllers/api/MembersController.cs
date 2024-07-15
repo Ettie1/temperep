@@ -9,6 +9,9 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using apifortemptes.Models;
+using System.Text;
+using apifortemptes.Lib;
+
 
 namespace apifortemptes.Controllers.api
 {
@@ -78,7 +81,8 @@ namespace apifortemptes.Controllers.api
             {
                 return BadRequest(ModelState);
             }
-
+            member.Salt = Security.GetSalt(128);
+            member.Password = Encoding.UTF8.GetString(Security.Hash(member.Password, member.Salt));
             db.Members.Add(member);
             db.SaveChanges();
 

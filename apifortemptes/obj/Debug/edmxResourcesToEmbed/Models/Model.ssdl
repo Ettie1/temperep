@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="temptechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="temptechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Address">
     <Key>
       <PropertyRef Name="AddressId" />
@@ -27,13 +27,13 @@
       <PropertyRef Name="MemberId" />
     </Key>
     <Property Name="MemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="10" />
+    <Property Name="Title" Type="nvarchar" MaxLength="20" />
     <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
     <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
     <Property Name="Age" Type="int" />
-    <Property Name="IDNo" Type="nvarchar" MaxLength="50" />
     <Property Name="Username" Type="nvarchar" MaxLength="50" />
-    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Salt" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Message">
     <Key>
